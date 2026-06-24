@@ -91,7 +91,7 @@ export function DataTable<TData, TValue>({
       },
     ],
     thumbnail:
-      "https://i.pinimg.com/736x/3d/5e/37/3d5e378c0d827c2dde980c3b7959d056.jpg",
+      "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_16x9.jpg?w=1200",
     warranty: "2 years international warranty",
     availability: true,
     images: [
@@ -154,8 +154,8 @@ export function DataTable<TData, TValue>({
       toast.success("Product created successfully.", {
         position: "top-center",
       });
-    } catch (error: any) {
-      toast.error(error?.data?.description || "Failed to create product", {
+    } catch (error: unknown) {
+      toast.error((error as { data?: { description?: string } })?.data?.description || "Failed to create product", {
         position: "top-center",
       });
     }

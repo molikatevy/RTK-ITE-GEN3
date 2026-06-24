@@ -63,20 +63,22 @@ export default function DataTablePage() {
       toast.success("Product deleted successfully.", {
         position: "top-center",
       });
-    } catch (error: any) {
-      toast.error(error?.data?.description || "Failed to deleted product", {
+    } catch (error: unknown) {
+      const err = error as { data?: { description?: string } };
+      toast.error(err.data?.description || "Failed to delete product", {
         position: "top-center",
       });
     }
   };
-  const handleUpdate = async (uuid: string, row: any) => {
+  const handleUpdate = async (uuid: string, row: unknown) => {
     try {
       await updateProduct({ uuid, data: product }).unwrap();
       toast.success("Product updated successfully.", {
         position: "top-center",
       });
-    } catch (error: any) {
-      toast.error(error?.data?.description || "Failed to updated product", {
+    } catch (error: unknown) {
+      const err = error as { data?: { description?: string } };
+      toast.error(err.data?.description || "Failed to update product", {
         position: "top-center",
       });
     }
